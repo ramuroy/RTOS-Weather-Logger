@@ -1,36 +1,29 @@
 # RTOS Weather Logger 🌦️  
 
 ## Overview  
-RTOS Weather Logger is a real-time temperature and humidity monitoring system built using **ESP32 Dev Board**, **DHT11 sensor**, and **FreeRTOS**. The system logs environmental data and sends it to the **Blynk IoT platform**, where users can monitor live readings and graphical representations of temperature and humidity.  
+RTOS Weather Logger is a temperature and humidity monitoring system built using **ESP32 Dev Board**, **DHT11 sensor**, and **FreeRTOS**. The system reads environmental data and sends it to the **Blynk IoT platform**, allowing real-time remote monitoring with graphical representation.  
 
 ## Features  
-✅ Real-time temperature and humidity monitoring 📊  
-✅ Runs tasks concurrently using **FreeRTOS** 🔄  
-✅ Remote monitoring via **Blynk IoT** 🌍  
-✅ Efficient and accurate data logging with timestamps ⏳  
-✅ Wi-Fi connectivity for seamless data transmission 📡  
+- Real-time **temperature and humidity** monitoring 📊  
+- **Concurrent task execution** using **FreeRTOS** 🔄  
+- **Wi-Fi-enabled** remote monitoring via **Blynk IoT** 🌍  
+- Efficient **data logging with timestamps** ⏳  
 
 ## Components Used  
-### **Hardware**  
 - **ESP32 Dev Board** – Microcontroller with Wi-Fi support  
 - **DHT11 Sensor** – Temperature & Humidity sensor  
-- **Power Supply** – USB/Adapter for ESP32  
-- **Jumper Wires** – For circuit connections  
-- **Breadboard** *(optional)* – For prototyping  
-
-### **Software & Tools**  
-- **ESP-IDF (FreeRTOS)** – Development framework for ESP32  
-- **Blynk IoT Platform** – Cloud-based data visualization  
-- **Arduino IDE / VS Code (ESP-IDF Extension)** – For coding & debugging  
+- **Blynk IoT Platform** – For real-time data visualization  
+- **FreeRTOS (ESP-IDF)** – For multitasking and scheduling  
 
 ## How It Works  
-- **Task 1**: Connects ESP32 to Wi-Fi and establishes Blynk communication.  
-- **Task 2**: Reads **temperature & humidity** data from **DHT11** sensor and logs it.  
-- **Both tasks run concurrently using FreeRTOS**, ensuring efficient multitasking.  
-- Data is **sent to Blynk** for real-time monitoring with graphical representation.  
+- **Task 1:** Connects ESP32 to Wi-Fi and establishes Blynk communication.  
+- **Task 2:** Reads **temperature & humidity** from the **DHT11** sensor and logs the data.  
+- **Both tasks run concurrently** using **FreeRTOS** for efficient multitasking.  
+- The data is displayed on the **Blynk app** with real-time graphical representation.  
 
-## Installation & Setup  
-1. **Clone this repository**  
-   ```sh
-   git clone https://github.com/YourUsername/RTOS-Weather-Logger.git  
-   cd RTOS-Weather-Logger  
+## License  
+This project is **open-source** and available under the **MIT License**.  
+
+---
+
+💡 *Feel free to contribute and improve this project!* 😊  
