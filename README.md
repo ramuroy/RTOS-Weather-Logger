@@ -62,7 +62,7 @@ void app_main() {
 5. Open the **Blynk app** and add widgets to display temperature (`V0`) and humidity (`V1`).
 
 ## 📽️ Demo Video
-🔗 **[Click here to watch the demonstration on LinkedIn](https://www.linkedin.com/posts/ramu-roy-b780382b7_rtos-freertos-esp32-activity-7296410530972405760-eyf2?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEwAX4wBY70YZ3l58lvkiXtyCZcnWWrfJAA&utm_campaign=copy_link)**
+🔗 **[Click here to watch the demonstration on LinkedIn](wait)**
 
 ## 🛠️ License
 This project is open-source and available under the MIT License.
