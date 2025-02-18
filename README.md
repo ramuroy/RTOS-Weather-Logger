@@ -1,29 +1,71 @@
-# RTOS Weather Logger 🌦️  
+# 🌦️ ESP32 FreeRTOS Weather Logger 🌡️📊
 
-## Overview  
-RTOS Weather Logger is a temperature and humidity monitoring system built using **ESP32 Dev Board**, **DHT11 sensor**, and **FreeRTOS**. The system reads environmental data and sends it to the **Blynk IoT platform**, allowing real-time remote monitoring with graphical representation.  
+A simple ESP32 project using FreeRTOS to log temperature and humidity data from a **DHT11** sensor and display it on the **Blynk IoT platform** with graphical representation.
 
-## Features  
-- Real-time **temperature and humidity** monitoring 📊  
-- **Concurrent task execution** using **FreeRTOS** 🔄  
-- **Wi-Fi-enabled** remote monitoring via **Blynk IoT** 🌍  
-- Efficient **data logging with timestamps** ⏳  
+## 📌 Required Components
+- ESP32 (38-pin) NodeMCU Development Board
+- DHT11 Temperature & Humidity Sensor
+- Jumper Wires
+- Breadboard
+- **ESP-IDF FreeRTOS Software**
 
-## Components Used  
-- **ESP32 Dev Board** – Microcontroller with Wi-Fi support  
-- **DHT11 Sensor** – Temperature & Humidity sensor  
-- **Blynk IoT Platform** – For real-time data visualization  
-- **FreeRTOS (ESP-IDF)** – For multitasking and scheduling  
+## 🔧 Wiring Diagram
+| ESP32 GPIO Pin | Component |
+|--------------|-----------|
+| GPIO 4      | DHT11 Data |
+| 3.3V        | DHT11 VCC  |
+| GND         | DHT11 GND  |
 
-## How It Works  
-- **Task 1:** Connects ESP32 to Wi-Fi and establishes Blynk communication.  
-- **Task 2:** Reads **temperature & humidity** from the **DHT11** sensor and logs the data.  
-- **Both tasks run concurrently** using **FreeRTOS** for efficient multitasking.  
-- The data is displayed on the **Blynk app** with real-time graphical representation.  
+## 📝 Code
+The FreeRTOS-based code creates a task that reads temperature and humidity data from the **DHT11 sensor** and sends it to the **Blynk IoT platform**.
 
-## License  
-This project is **open-source** and available under the **MIT License**.  
+```c
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "dht.h"
+#include "BlynkSimpleEsp32.h"
+
+#define DHT_PIN 4
+#define BLYNK_AUTH_TOKEN "Your_Blynk_Auth_Token"
+
+void dht_task(void *pvParameter) {
+    int16_t temperature, humidity;
+    while (1) {
+        if (dht_read_data(DHT_TYPE_DHT11, DHT_PIN, &humidity, &temperature) == ESP_OK) {
+            printf("Temperature: %d°C, Humidity: %d%%\n", temperature, humidity);
+            Blynk.virtualWrite(V0, temperature);
+            Blynk.virtualWrite(V1, humidity);
+        } else {
+            printf("Failed to read from DHT sensor\n");
+        }
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+    }
+}
+
+void app_main() {
+    Blynk.begin(BLYNK_AUTH_TOKEN, "Your_WiFi_SSID", "Your_WiFi_Password");
+    xTaskCreate(&dht_task, "DHT Sensor Task", 2048, NULL, 5, NULL);
+}
+```
+
+## 🚀 How to Run
+1. Install **ESP-IDF** and set up the development environment.
+2. Clone this repository and navigate to the project folder.
+3. Replace `Your_Blynk_Auth_Token`, `Your_WiFi_SSID`, and `Your_WiFi_Password` with your actual Blynk credentials.
+4. Build and flash the code using:
+   ```sh
+   idf.py build
+   idf.py flash
+   idf.py monitor
+   ```
+5. Open the **Blynk app** and add widgets to display temperature (`V0`) and humidity (`V1`).
+
+## 📽️ Demo Video
+🔗 **[Click here to watch the demonstration on LinkedIn](https://www.linkedin.com/posts/ramu-roy-b780382b7_rtos-freertos-esp32-activity-7296410530972405760-eyf2?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEwAX4wBY70YZ3l58lvkiXtyCZcnWWrfJAA&utm_campaign=copy_link)**
+
+## 🛠️ License
+This project is open-source and available under the MIT License.
 
 ---
-
-💡 *Feel free to contribute and improve this project!* 😊  
+✨ Happy coding with ESP32 & FreeRTOS! 🚀
