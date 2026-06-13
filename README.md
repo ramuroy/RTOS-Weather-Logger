@@ -1,5 +1,10 @@
 # 🌦️ ESP32 FreeRTOS Weather Logger 🌡️📊
 
+![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=flat-square&logo=espressif&logoColor=white)
+![ESP-IDF](https://img.shields.io/badge/ESP--IDF-FreeRTOS-4FA94D?style=flat-square)
+![Blynk](https://img.shields.io/badge/IoT-Blynk-2E6BA8?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-3da639?style=flat-square)
+
 A simple ESP32 project using FreeRTOS to log temperature and humidity data from a **DHT11** sensor and display it on the **Blynk IoT platform** with graphical representation.
 
 ## 📌 Required Components
