@@ -63,7 +63,7 @@ void loop() {
 
 ## 🚀 How to Run
 1. Install the **ESP32 board package** in the Arduino IDE (Boards Manager → "esp32"), plus the **Blynk** and **DHT sensor library** packages (Library Manager).
-2. Open `RTOS-Weather-Logger.ino` and fill in your `BLYNK_TEMPLATE_ID`, `BLYNK_AUTH_TOKEN`, Wi-Fi `ssid`, and `pass`.
+2. Open `RTOS-Weather-Logger.ino` and fill in your `BLYNK_TEMPLATE_ID`, `BLYNK_TEMPLATE_NAME`, `BLYNK_AUTH_TOKEN`, Wi-Fi `ssid`, and `pass`.
 3. Select **Tools → Board → ESP32 Dev Module**, pick the serial port, and click **Upload**.
 
    Or from the command line with `arduino-cli`:
